@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{floatpag}				% Different pagestyles
+\usepackage{amsmath}
+\usepackage{array}	
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{parskip}
+\usepackage{multirow}
+%\usepackage[]{mcode}
+\usepackage{listings}
+
+\begin{document}
+
+
+\section{Exercise 0.6}
+\subsection*{a)}
+
+$a = \frac{h^2}{8mL^2}$ ,  $n_x = 1, 2, 3, ...$ og $\epsilon = an_x^2$
+
+Har at 
+
+$ Z = \sum_0^\infty e^{\frac{-\epsilon}{kT}} = \int_0^\infty e^{-\beta a n_x^2} dn_x$ 
+
+Ved å sette inn for $\epsilon$ og sette inn $ \beta = \frac{1}{kT}$
+
+Settes så $\lambda = \sqrt{\beta a}$ 
+
+Dermed er 
+
+$\int_0^\infty e^{-\lambda^2n_x^2} = \frac{\sqrt{\pi}}{2\sqrt{\beta a}} = \sqrt{\frac{8\pi kTmL^2}{4h^2}} = \sqrt{\frac{2\pi kTm}{h^2}}L$
+
+Som er det som skulle vises.
+
+\subsection*{b)} 
+
+
+Når vi skal se på tilfellet av flere forskjellige partikler i det en-dimensjonale rommet. 
+
+Vet vi at $Z = Z_1*Z_2*...$
+
+slik at for N partikler forskjellige partikler er 
+
+$Z = \sum_{n= 0}^N Z_n$
+
+
+Dersom disse partiklene ikke er mulige å skille. 
+
+Slik at alle er like får vi $Z = \frac{Z_1^N}{N!}$
+
+Som da ofte er tilfellet.
+
+\subsection*{c)}
+
+ For å finne energien til gassen setter vi inn i 
+ 
+ $E =-\frac{\partial\frac{ \frac{2\pi T}{\alpha \beta}^{\frac{N}{2}}}{N!}}{\partial \beta} = \frac{\partial}{\partial \beta} (\ln(\frac{2\pi T}{\alpha \beta}^{N/2})- \ln(N!)$
+ 
+ Ser at dette kan skrives som 
+ 
+ $E = -\frac{\partial}{\partial \beta} (\ln((2\pi T)^{N/2}) - \ln((\alpha \beta)^{N/2}))) = \frac{N}{2\beta}$
+ 
+ Setter inn for $\beta = \frac{1}{kT}$ og får 
+ 
+ $E = \frac{NkT}{2}$
+ 
+ \subsection*{d)}
+ 
+ Nå skal vi finne entropien til denne gassen 
+ 
+ Vet at $ F = E-TS$ og siden dette er et lukket system som ikke blir utsatt for arbeid er $F = 0$
+ 
+ altså er entropien $S = \frac{E}{T} = \frac{\frac{nkT}{2}}{T} = \frac{nkT^2}{2}$
+ 
+ 
+\subsection*{e)}
+ 
+Nå skal vi øke antall dimensjoner til to. Bruker samme som i de tidligere oppgavene.
+ 
+Partisjonen er da 
+ 
+$ Z = \int_0^\infty \int_0^\infty e^{-\beta a n_x^2} e^{-\beta a n_y^2}dn_x dn_y  = (\frac{2\pi kTm}{h^2})^{\frac{1}{4}}L^2$
+
+Energien 
+
+$ E = \frac{N}{4\beta} = \frac{NkT}{4}$ 
+
+Entropi
+
+$S = \frac{NkT^2}{4}$
+
+\subsection*{f) }
+
+Siden vi har sett på tidligere at $Z = Z_1*Z_2$ for to systemer hvor vi kan skille tilstandene. 
+
+Og vi har funnet $Z_{2d} = Z_{xy} = (\frac{2\pi kTm}{h^2})^{\frac{1}{4}}L^2$ 
+
+kan vi skrive $Z = Z_{xy}*Z_z $
+
+Siden $Z_z$ bare har en energitilstand er $Z_z = exp(-\beta \epsilon_0 )^N$
+
+Dermed er det fornuftig å skrive 
+
+$Z = Z_{xy} exp(-\beta \epsilon_0 )^N$
+
+$Z = (\frac{2\pi kTm}{h^2})^{\frac{1}{4}}L^2 exp(-\beta \epsilon_0 )^N$
+
+\subsection*{g)}
+
+Energien blir da
+
+\section{Exercise 0.7}	
+
+Her står jeg fast og blir ikke ha tid til å fullføre
+
+\subsection*{a)}
+
+
+ Den totale entropien må være større eller uforandret etter en runde gjennom motoren. 
+ 
+ Siden vi forbrenner gassen må temperaturen øke og tilslutt gå ut av det indre kammeret med høy temperatur. Der entropien er høy, slik at entropien utenfor må øke når entropien inne synker. Siden dette er ett ideal tilfelle vil den totale entropi endringen være 0. 
+ 
+\subsection*{b)}
+ 
+ Når drivstoffet sprøytes inn antennes det og dermed har vi e
+ 
+ $ S = \frac{Q_H}{Q_L}$
+ 
+ hvor $Q_L = E = $
+ 
+ og $Q_H = W_{23} = \int_{V_2}^{V_3} \frac{NkT}{V^\gamma}dV $
+ 
+ 
+ 
+\subsection*{c)}
+ 
+\subsubsection*{d)}
+ 
+ 
+\subsubsection*{e)}
+
+Vi har at 
+
+$ e = 1-\frac{V_1}{V_2}^{\gamma - 1} = 1 - \frac{T_2}{T_1}$
+
+dette gir
+
+$  \frac{V_1}{V_2}^{\gamma-1} = \frac{T_2}{T_1}$ 
+
+og da 
+
+$T_1 V_1^{\gamma-1} = T_2 V_2^{\gamma-1} $
+
+Og det samme gjelder for overgangen 3 til 4. 
+
+$ e = 1-\frac{V_4}{V_3}^{\gamma - 1} = 1 - \frac{T_3}{T_4}$
+
+dette gir
+
+$  \frac{V_4}{V_3}^{\gamma-1} = \frac{T_3}{T_4}$ 
+
+og da 
+
+$T_4 V_4^{\gamma-1} = T_3 V_3^{\gamma-1} $
+
+
+\subsubsection*{f)}
+
+
+$ Q_{23} = W_{23} = \int_{V_2}^{V_3} \frac{NKT_3}{V^{\gamma-1}}dV = \gamma NKT_3ln(\frac{V_2}{V_3}) $
+
+ 
+
+\end{document}

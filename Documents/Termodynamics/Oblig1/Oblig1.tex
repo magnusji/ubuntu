@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{floatpag}				% Different pagestyles
+\usepackage{amsmath}
+\usepackage{array}	
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{parskip}
+\usepackage{multirow}
+\usepackage[]{mcode}
+
+\begin{document}
+\title{Oblig 1}
+
+\subsubsection*{a)}
+With N = 2 and q = 3 we get these possible microstates
+
+\begin{table}[hb!]
+\begin{tabular}{c|c}
+
+N1 & N2 \\
+\hline
+
+3 & 0 \\
+0 & 3 \\
+2 & 1 \\
+1 & 2 \\
+
+\end{tabular}
+\end{table}
+
+
+\subsubsection*{b)}
+With N = 3 and q = 3 we get these possible microstates
+
+\begin{table}[hb!]
+\begin{tabular}{c|c|c}
+N1 & N2 & N3\\
+\hline
+3 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & 3 \\
+2 & 1 & 0 \\
+2 & 0 & 1 \\
+1 & 2 & 0 \\
+0 & 2 & 1 \\
+1 & 0 & 2 \\
+0 & 1 & 2 \\
+1 & 1 & 1 \\
+\end{tabular}
+\end{table}
+
+\newpage
+
+\subsection*{c)}
+With N = 4 and q = 3 we get these possible microstates
+
+\begin{table}[hb!]
+\begin{tabular}{c|c|c|c}
+N1 & N2 & N3 & N4 \\
+\hline
+3 & 0 & 0 & 0 \\
+0 & 3 & 0 & 0 \\
+0 & 0 & 3 & 0 \\
+0 & 0 & 0 & 3 \\
+2 & 1 & 0 & 0 \\
+2 & 0 & 1 & 0 \\
+2 & 0 & 0 & 1 \\
+1 & 2 & 0 & 0 \\
+0 & 2 & 1 & 0 \\
+0 & 2 & 0 & 1 \\
+1 & 0 & 2 & 0 \\
+0 & 1 & 2 & 0 \\
+0 & 0 & 2 & 1 \\
+1 & 0 & 0 & 2 \\
+0 & 1 & 0 & 2 \\
+0 & 0 & 1 & 2 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 1 \\
+
+\end{tabular}
+\end{table}
+
+
+\subsection*{d)}
+
+$\Omega(N,q) = \frac{(q + N -1)!}{3!(N-1)!} $
+
+Inserts N = 2 and q = 3 and gets $\Omega = 4$. Which in consistent with the listed microstates in a. 
+
+When doing this for the values in b I find $\Omega = 10$ which seems correct. 
+
+In c i find $\Omega = 20 $ which is also correct. 
+
+
+\subsection*{e)}
+
+
+
+\end{document}

@@ -1,0 +1,12 @@
+import numpy as np
+import os
+
+
+#---------------------------------------#
+'''
+reading data from data file ascii type  
+'''
+
+
+data = open("/Data/SW_PREL_EFIA_LP_1B_20131229T000000_20131229T235959_0102.txt", 'r')
+

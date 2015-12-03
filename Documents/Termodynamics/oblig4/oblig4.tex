@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{floatpag}				% Different pagestyles
+\usepackage{amsmath}
+\usepackage{array}	
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{parskip}
+\usepackage{multirow}
+
+\usepackage{listings}
+
+\begin{document}
+
+\title{Oblig 4}
+\author{Magnus Isaksen}
+\maketitle
+\vfill
+\newpage
+
+\section*{a)}
+
+Partisjonen finner vi ved 
+
+$Z_R = \sum_{j=0}^{\infty} g(j)e^{\frac{-E}{kT}}$
+
+hvor 
+
+$E = j(j+1)\theta_rk$
+
+$\theta_r k = \frac{\hbar^2}{2I}$
+
+og 
+
+$g = 2j+1$
+
+Når vi setter disse inn blir uttrykket
+
+$Z_R = \sum_{j=0}^{\infty} (2j+1)e^{\frac{-j(j+1)\frac{\hbar^2}{2I}}{kT}}$
+
+\section*{b)}
+
+Skriver python programmet 
+
+\begin{lstlisting}
+from pylab import *
+from numpy import *
+
+Tmarked = [0.05, 0.2, 5, 10 , 15, 20]
+n = 100
+lT = len(Tmarked)-1
+z = zeros((lT,n), 'float')
+for i in range(lT):
+    for j in range(n):
+        z[i,j] = (2.0*j+1)*exp(-(j*(j+1))*Tmarked[i])
+        print j
+
+
+
+t = linspace(0,5,n)
+
+hold('on')
+for i in range(lT):
+    plot(t,z[i,:])
+
+show()
+
+\end{lstlisting}
+
+\section*{c)}
+
+Når T blir mye større enn $\theta_R$ vil det som er i eksponenten i uttrykket gå mot null, altså 
+
+$\lim_{T/\theta \rightarrow 0} Z_R = \int_0^\infty (2j+1)$
+
+
+
+\end{document}

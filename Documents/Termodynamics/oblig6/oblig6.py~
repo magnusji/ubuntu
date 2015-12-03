@@ -1,0 +1,5 @@
+from pylab import *
+
+k = #Boltzmann 
+eps = #bond energy
+mu = #chemical potential

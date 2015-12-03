@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{floatpag}				% Different pagestyles
+\usepackage{amsmath}
+\usepackage{array}	
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{parskip}
+\usepackage{multirow}
+%\usepackage[]{mcode}
+\usepackage{listings}
+
+
+\begin{document}
+\title{Oblig2}
+\author{Magnus Isaksen}
+\maketitle
+\section*{Exercise 0.8}
+
+\subsection*{a)}
+
+Vet at for ideell gass er det kjemiske potensialet uten noen annen påført kraft
+
+$\mu = kT \ln(\frac{n}{n_Q})$ 
+
+Hvor n er partikkel tettheten og $n_Q$ er en samling av konstanter. 
+
+Setter vi på en elektrisk kraft $F = Nq\Phi$
+
+Får vi $\mu = \frac{\partial F}{\partial N} = kT \ln(\frac{n}{n_Q}) + q\Phi$
+
+Der q er ladningen og $\Phi$ er den elektiske kraften. 
+
+
+\subsubsection*{b)}
+
+For å finne likevekts tilstanden skal Helmholz fri energi vær lavest mulig.
+
+Samtidig skal summen av krefter være 0. 
+
+Dette finner jeg ved den deriverte av $\mu$ med hensyn på x. 
+
+Slik at $\frac{d\mu}{dx} = 0$, da må $\mu$ være konstant.
+
+\subsubsection*{c)}
+
+Siden vi antar at n(x) er antisymmetrisk over $n(L/2) = n_0$. 
+
+kan vi skrive 
+
+$n_0 -n(x) = -(n_0 - n(L-x))$
+
+$2n_0 = n(x) + n(L-x)$
+
+og for $x= 0$ er 
+
+\begin{equation}
+2 n_0 = n(0) +n(L)
+\label{eq1}
+\end{equation} 
+
+Og siden det skal være i likevekt er $\mu (0) = \mu (L)$
+
+Dermed er
+
+$kT\ln(\frac{n(0)}{n_Q} + q\Phi(0) = kT \ln(\frac{n(L)}{n_Q} + q\Phi(L)$ 
+
+Hvor $\Phi(0) = 0$ og $\Phi(L) = \Phi_L$ 
+
+Slik at 
+
+$kT \ln(n(0)) = kT \ln(n(L)) +q\Phi_L$
+
+Løser for $n(L)$
+
+$\ln n(0) = \ln n(L) + \frac{q\Phi_L}{kT}$
+
+$n(0) = n(L)e^{\frac{q\Phi_L}{kT}}$
+
+Setter inn i \ref{eq1} 
+
+$2n_0 = n(L)e^{\frac{q\Phi_L}{kT}} + n(L)$
+
+som gir 
+
+$n(L) = \frac{2n_0}{e^{\frac{q\Phi_L}{kT}} +1}$
+
+Løser så for $n(0)$
+
+$\ln n(L) = \ln n(0) - \frac{q\Phi_L}{kT}$
+
+setter inn 
+
+$2n_0 = n(0)e^{-\frac{q\Phi_L}{kT}} + n(0)$
+
+$n(0) = \frac{2n_0}{e^{-\frac{q\Phi_L}{kT}} +1}$
+
+\subsubsection*{d)}
+
+
+
+\section*{Exercise 0.9}
+
+\subsubsection*{a)}
+
+Gibbs sum
+
+$\sum_N \sum_{s(N)} e^{\frac{N\mu -\epsilon_{s(N)}}{kT}}$
+
+gir 
+
+$1 + e^{\frac{\mu - \epsilon}{kt}} + e^{\frac{2\mu - 4\epsilon}{kt}} + e^{\frac{3\mu - 9\epsilon}{kt}}$
+
+
+\subsubsection*{b)}
+Partikkel tallet 
+
+$<N> = \sum_N NP(N) = 0*P(0) + 1*P(1)$
+
+Sannsynligheten 
+$P(1) = \frac{e^{\frac{0.2eV - 0.2eV}{kt}}}{1+e^{\frac{0.2eV -0.2eV}{kt}}} = \frac{1}{2}$
+
+som da også gir
+
+$<N> = \frac{1}{2}$
+
+\subsection*{c)}
+
+For kjemisk potensiale 0.6eV
+
+$P(0.6) = \frac{e^{\frac{2*0.6 - 4*0.2eV}{kt}}}{1 +e^{0.2eV -0.2eV}{kt} + e^{\frac{2*0.6eV - 4*0.2eV}{kt}}} = \frac{1}{2}$
+
+Dette gir ladnings tilstand
+
+$<N> = 0*1 +1*\frac{1}{2} + 2*\frac{1}{2} = \frac{3}{2}$
+
+\subsection*{d)}
+
+For lave temperaturer går T mot 0 og dermed også gjennomsnittstilstanden, slik at grunntilstanden er eneste mulige. og dermed må alle være i denne tilstanden. 
+
+\section*{Exercise 0.10}
+
+\subsubsection*{a)}
+
+$\sum_N \sum_{s(N)}e^{-\frac{\varepsilon_{s(N)}- N\mu}{kT}}$
+
+Hvor N er partikkeltallet, $\varepsilon$ er bindings energien, $\mu$ er det kjemiske potensialet, k er Boltzmanns konstant og T er temperatur.
+
+Grensene er satt slik at hvis N er 4 går grensen fra 0 til 3.  Fikk ikke et helt tydelig bilde av hvordan s(N) oppførte seg, men tror grensene her går også som for N.
+
+\subsubsection*{b)}
+
+For at
+
+$ P(1) = \frac{e^{\frac{\mu - \varepsilon(1)}{kT}}}{1 + e^{\frac{\mu - \varepsilon(1)}{kT}}} = \frac{X}{Z_G}$
+
+Hvor $X = e^{\frac{\mu - \varepsilon(1)}{kT}}$
+
+
+\subsubsection*{c)}
+
+For nøyaktig fire molekyler 
+
+
+$P(4) = \frac{e^{\frac{4\mu - 16\varepsilon(1)}{kT}}}{1 + e^{\frac{\mu - \varepsilon(1)}{kT}} + e^{\frac{2\mu - 4\varepsilon(1)}{kT}} + e^{\frac{3\mu - 9\varepsilon(1)}{kT}} + e^{\frac{4\mu - 16\varepsilon(1)}{kT}}} = \frac{X^4}{Z_G} $ 
+
+\subsubsection*{d)}
+
+Herfra har jeg ikke fått gjordt resten. Var mye som var litt vanskelig å forstå i denne obligen. 
+
+\end{document}

@@ -1,0 +1,15 @@
+
+class Readdata:
+    def __init__(self,filename):
+        self.infile = open(filename,'r'); self.infile.readlines()
+
+    def set_var(self): 
+        self.columns = [self.infile[i].split() for i in range(len(self.infile)-1)]
+        self.Date = []; self.Latitude = []; self.Longitude = []
+        for i in range(len(self.columns)):
+            self.columns[i][5] = float(self.columns[i][5]); self.columns[i][6] = float(self.columns[i][6])
+            self.Date.append(self.columns[i][2]); self.Latitude.append(self.columns[i][5]); self.Longitude.append(self.columns[i][6])
+
+    def find_overlap(self):
+        
+                        

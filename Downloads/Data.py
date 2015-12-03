@@ -1,0 +1,104 @@
+from numpy import *
+from matplotlib.pyplot import *
+
+#absorption sprectra of ethanol, to be subtracted from 7-DHC
+init = open('DF01.SP','r'); init = init.readlines();
+ethanol = [init[i].split('\t') for i in range(86,len(init)-1)]
+for i in range(0,len(init) -87):
+			ethanol[i][1] = float(ethanol[i][1]); ethanol[i][0] = float(ethanol[i][0])
+
+#Reads in data 
+class Data():	
+	def __init__(self,filename):
+		self.file = open(filename,'r'); self.file = self.file.readlines();
+	
+	#Reads in absorption spectras of provitamin D and its photoisomers
+	def abs_iso(self): 	
+		self.val = [self.file[i].split(';') for i in range(len(self.file)-1)]
+		self.value = [] ; self.wlen = []
+		for i in range(len(self.val)):
+			self.val[i][1] = float(self.val[i][1]); self.val[i][0] = float(self.val[i][0])
+			self.value.append(self.val[i][1]); self.wlen.append(self.val[i][0])
+	
+	#Reads in absorption spectra for 7-DHC
+	def DHC(self):		
+		self.val = [self.file[i].split('\t') for i in range(86,len(self.file)-1)]
+		self.value = [] ; self.wlen = []
+		for i in range(0,len(self.file) -87):
+			self.val[i][1] = float(self.val[i][1]); self.val[i][0] = float(self.val[i][0])
+			self.value.append(self.val[i][1]-ethanol[i][1]) 
+			self.wlen.append(self.val[i][0])
+
+#e1:Pro,  e2:Pre,  e3:T,  e4:L,  e5:Tox	
+e1 = Data('ext-e1-Pro.txt'); e1.abs_iso()
+e2 = Data('ext-e2-Pre.txt'); e2.abs_iso()
+e3 = Data('ext-e3-T.txt'); e3.abs_iso()
+e4 = Data('ext-e4-L.txt'); e4.abs_iso()
+UV = Data('UV-intensity.txt'); UV.abs_iso()
+
+#absorption spectra aften given time of radiation. ethanol absorption subtracted. 
+min_0 = Data('DF02.SP'); min_0.DHC(); min_1 = Data('DF03.SP'); min_1.DHC() ; min_2 = Data('DF04.SP'); min_2.DHC(); min_3 = Data('DF05.SP'); min_3.DHC(); min_4 = Data('DF06.SP'); min_4.DHC(); min_5 = Data('DF07.SP'); min_5.DHC(); min_6 = Data('DF08.SP'); min_6.DHC(); min_7 = Data('DF09.SP'); min_7.DHC(); min_8 = Data('DF10.SP'); min_8.DHC(); min_9 = Data('DF11.SP'); min_9.DHC(); min_10 = Data('DF12.SP'); min_10.DHC(); min_11 = Data('DF13.SP'); min_11.DHC(); min_12 = Data('DF14.SP'); min_12.DHC(); min_13 = Data('DF15.SP'); min_13.DHC(); min_14 = Data('DF16.SP'); min_14.DHC(); min_15 = Data('DF17.SP'); min_15.DHC(); min_16 = Data('DF18.SP'); min_16.DHC(); min_17 = Data('DF19.SP'); min_17.DHC(); min_18 = Data('DF20.SP'); min_18.DHC()
+
+#plot(min_0.wlen, min_0.value) 
+#show()
+
+#quantum yields
+q_12 = 0.260 #[Pro->Pre] 
+q_21 = 0.015 #[Pre->Pro]
+q_23 = 0.480 #[Pre->T]
+q_24 = 0.030 #[Pre->L]
+q_25 = 0.039 #[Pre->Tox]
+q_32 = 0.100 #[T->Pre]
+q_42 = 0.420 #[L->Pre]
+
+
+#chosen wavelength
+wl = 296
+
+#exposure of 7-DCH to UV 
+time = linspace(0,18,19) 
+l = 0.5 #cm cuvette
+
+#concentration of photoisomers and their initial condition
+c1=zeros(len(time)); c2=zeros(len(time)); c3=zeros(len(time)); c4=zeros(len(time)); c5=zeros(len(time));sum_prod=zeros(len(time))
+c1[0]=1; c2[0]=0; c3[0]=0; c4[0]=0; sum_prod[0]=c1[0] #c5[0]=0
+
+#finding absortion coeffs for the chosen wavelength
+a = e1.wlen.index(wl)
+e = UV.wlen.index(wl)
+e1_wl = e1.value[a]; e2_wl = e2.value[a]; e3_wl = e3.value[a]; e4_wl = e4.value[a]; 
+I0 = UV.value[e] 
+
+#differential equations giving the development of the concentrations 
+for i in range(1, len(time)):
+	D = l*(e1_wl*c1[i-1]+e2_wl*c2[i-1]+e3_wl*c3[i-1]+e4_wl*c4[i-1])
+	I = I0*(1-10**(-D))/D
+	c1[i] = c1[i-1] + I*(-e1_wl*c1[i-1]*q_12 + e2_wl*c2[i-1]*q_21)
+	c2[i] = c2[i-1] + I*(-e2_wl*c2[i-1]*q_21 + e1_wl*c1[i-1]*q_12 - e2_wl*c2[i-1]*q_23 + e3_wl*c3[i-1]*q_32 - e2_wl*c2[i-1]*q_24 + e4_wl*c4[i-1]*q_42 - e2_wl*c2[i-1]*q_25)
+	c3[i] = c3[i-1] + I*(-e3_wl*c3[i-1]*q_32 + e2_wl*c2[i-1]*q_23)
+	c4[i] = c4[i-1] + I*(-e4_wl*c4[i-1]*q_42 + e2_wl*c2[i-1]*q_24)
+#	c5[i] = c5[i-1] + I*(-e2_wl*c2[i-1]*q_25)
+	sum_prod[i] = c1[i]+c2[i]+c3[i]+c4[i]
+
+"""
+#plotting of the concentrations 
+plot(time,c1,time,c2,time,c3,time,c4, time,sum_prod)
+xlabel('Time, min')
+ylabel('Concentration, %')
+legend(['Pro','Pre','T','L', 'sum'])
+title('wl = %d nm' % wl)
+show()
+"""
+
+#Find production of vitamin D:
+plot(min_0.wlen, min_0.value,min_1.wlen, min_1.value,min_2.wlen, min_2.value) 
+show()
+
+
+ 
+
+
+
+
+
+
